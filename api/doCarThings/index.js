@@ -6,22 +6,22 @@ const app = express();
 
 app.use(express.json());
 
-const cars = require('./api/cars.json');
+const cars = require('./api/doCarThings/cars.json');
 
 //get all cars
-app.get('/api/cars', (req, res) => {
+app.get('/api/doCarThings/cars', (req, res) => {
     res.json(cars);
 });
 
 //get car by id
-app.get('/api/cars/:id', (req, res) => {
+app.get('/api/doCarThings/cars/:id', (req, res) => {
     const id = req.params.id;
     const car = cars.find(car => car.id === id);
     res.json(car);
 });
 
 //update car
-app.put('/api/cars/:id', (req, res) => {
+app.put('/api/doCarThings/cars/:id', (req, res) => {
     const id = req.params.id;
     const updatedCar = req.body;
     const index = cars.findIndex(car => car.id === id);
@@ -30,7 +30,7 @@ app.put('/api/cars/:id', (req, res) => {
 });
 
 //delete car
-app.delete('/api/cars/:id', (req, res) => {
+app.delete('/api/doCarThings/cars/:id', (req, res) => {
     const id = req.params.id;
     const index = cars.findIndex(car => car.id === id);
     cars.splice(index, 1);
@@ -38,7 +38,7 @@ app.delete('/api/cars/:id', (req, res) => {
 });
 
 //add car
-app.post('/api/cars', (req, res) => {
+app.post('/api/doCarThings/cars', (req, res) => {
     console.log(req);
     const newCar = req.body;
     console.log(newCar);
